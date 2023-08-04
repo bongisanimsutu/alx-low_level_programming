@@ -1,5 +1,3 @@
-0-whatsmyname.c
-
 #include <stdio.h>
 #include "main.h"
 
