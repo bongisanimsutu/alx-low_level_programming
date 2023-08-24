@@ -1,13 +1,12 @@
 #include <stdio.h>
 
-void first(void) __attribute__ ((constructor));
+void execute_before_main(void) __attribute__ ((constructor));
 
 /**
- * first - prints a sentence before the main
+ * execute_before_main - prints a custom message before the main
  * function is executed
  */
-void first(void)
+void execute_before_main(void)
 {
-	printf("You're beat! and yet, you must allow,\n");
-	printf("I bore my house upon my back!\n");
+    printf("A special message before main starts.\n");
 }
