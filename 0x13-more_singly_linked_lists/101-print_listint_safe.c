@@ -1,23 +1,24 @@
 #include "lists.h"
 #include <stdio.h>
 
-size_t count_loop_nodes(const listint_t *head);
-size_t print_unique_listint(const listint_t *head);
+size_t looped_listint_len(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 
 /**
- * count_loop_nodes - Counts the number of nodes in a looped listint_t linked list.
- * @head: A pointer to the head of the listint_t to check.
+ * looped_listint_len - Calculates the count of unique nodes
+ * in a looped listint_t linked list.
+ * @head: A pointer to the head of the listint_t to analyze.
  *
- * Return: If the list is not looped - 0.
- * Otherwise - the number of nodes in the list.
+ * Return: If the list isn't looped - 0.
+ * Otherwise - the count of unique nodes in the list.
  */
-size_t count_loop_nodes(const listint_t *head)
+size_t looped_listint_len(const listint_t *head)
 {
     const listint_t *tortoise, *hare;
     size_t nodes = 1;
 
     if (head == NULL || head->next == NULL)
-        return 0;
+        return (0);
 
     tortoise = head->next;
     hare = (head->next)->next;
@@ -41,27 +42,27 @@ size_t count_loop_nodes(const listint_t *head)
                 tortoise = tortoise->next;
             }
 
-            return nodes;
+            return (nodes);
         }
 
         tortoise = tortoise->next;
         hare = (hare->next)->next;
     }
 
-    return 0;
+    return (0);
 }
 
 /**
- * print_unique_listint - Prints a listint_t list without duplicate nodes.
+ * print_listint_safe - Safely prints a listint_t list.
  * @head: A pointer to the head of the listint_t list.
  *
- * Return: The number of unique nodes in the list.
+ * Return: The count of nodes in the list.
  */
-size_t print_unique_listint(const listint_t *head)
+size_t print_listint_safe(const listint_t *head)
 {
     size_t nodes, index = 0;
 
-    nodes = count_loop_nodes(head);
+    nodes = looped_listint_len(head);
 
     if (nodes == 0)
     {
@@ -82,5 +83,5 @@ size_t print_unique_listint(const listint_t *head)
         printf("-> [%p] %d\n", (void *)head, head->n);
     }
 
-    return nodes;
+    return (nodes);
 }
