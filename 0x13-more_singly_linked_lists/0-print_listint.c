@@ -9,13 +9,14 @@
 size_t print_listint(const listint_t *h)
 {
 	size_t num = 0;
+	const listint_t *current = h;  // Maintain a separate pointer to avoid modifying h
 
-	while (h)
+	while (current)
 	{
-		printf("%d\n", h->n);
+		printf("%d\n", current->n);
 		num++;
-		h = h->next;
+		current = current->next;
 	}
 
-	return (num);
+	return num;
 }
