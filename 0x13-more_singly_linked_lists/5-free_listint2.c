@@ -1,22 +1,17 @@
 #include "lists.h"
 
 /**
- * free_listint_and_set_head - frees a linked list and sets head to NULL
- * @head: pointer to the pointer of the listint_t list to be freed
+ * free_listint - releases memory of a linked list
+ * @head: listint_t list to be deallocated
  */
-void free_listint_and_set_head(listint_t **head)
+void free_listint(listint_t *head)
 {
-    listint_t *temp;
+    listint_t *current;
 
-    if (head == NULL || *head == NULL)
-        return;
-
-    while (*head)
+    while (head)
     {
-        temp = (*head)->next;
-        free(*head);
-        *head = temp;
+        current = head->next;
+        free(head);
+        head = current;
     }
-
-    *head = NULL;
 }
